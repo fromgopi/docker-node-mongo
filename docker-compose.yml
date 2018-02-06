@@ -8,15 +8,13 @@ services:
     ports:
       - "3000:3000"
     links:
-      - mongo
-  mongo:
-    image: mongo
+      - db
+  db:
+    image: mysql
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql
+      - ./docker/build/mysql/schema:/docker-entrypoint-initdb.d:ro
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
     ports:
-      - "27017:27017"
-  mongo-seed:
-    build: ./mongo-seed
-    links:
-      - mongo
+      - "3367:3306"

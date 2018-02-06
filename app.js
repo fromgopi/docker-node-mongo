@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var db = require('mongoose');
+var db = require('mysql');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var product = require('./product')
@@ -8,10 +8,14 @@ var product = require('./product')
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 var port = process.env.PORT || 8090;
-var route = express.Router();
+var router = express.Router();
 
 
-db.connect('mongodb://mongo:27017/products');
+
+router.use(function(req,res){
+  console.log('Logging will be done here');
+  next();
+});
 
 app.get('/', function(req, res){
   res.send("Hello World");

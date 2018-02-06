@@ -1,5 +1,9 @@
 #node_modules are to be commented.
 
 /node_modules
-
+package-lock.json
 npm-debug.log
+/docker/data/
+/docker/.DS_Store
+/docker/build/.DS_Store
+/docker/build/mysql/.DS_Store

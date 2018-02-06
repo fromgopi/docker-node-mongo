@@ -1,9 +1,12 @@
-var db = require('mongoose');
-var Schema = db.Schema;
-var productSchema = new Schema({
-  title: String,
-  price: Number,
-  instock: Boolean,
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root"
 });
 
-module.exports = db.model('Product', productSchema);
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+})
